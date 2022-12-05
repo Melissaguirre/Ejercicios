@@ -3,21 +3,26 @@
 def cadena(words):
      dictionary= {}
      for word in words:
-        dictionary[word] = words.count(word)
+         if word in dictionary:
+            dictionary[word] += 1
+         else:
+           dictionary[word] = 1                
         
      return dictionary
 
-def repetidos(texto):
+def repetidos(words):
+        mayor = 0 
         tupla = ()
-        dictionary = cadena(texto)
-        word_max = max(dictionary, key = dictionary.get)        #por medio del max, key y get retorna la palabra que más se repite
-        repet = dictionary[word_max]                   #traer lo que tiene la key 
-        tupla = (word_max, repet)
-        return tupla      
+        dictionary = cadena(words)
+        for clave, valor in dictionary.items():
+            if valor > mayor :
+                mayor = valor   
+                tupla = (clave, mayor)
+                return tupla      
  
      
                
 words = (input("Ingresa una cadena: ").split())
 print (cadena(words))  
-print (repetidos(words))           
+print (repetidos(words)) 
  
