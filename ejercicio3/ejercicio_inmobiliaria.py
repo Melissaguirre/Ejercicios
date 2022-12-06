@@ -22,7 +22,7 @@ lista = [
 def inmuebles(lista): 
     for elem in lista:
         if elem['zona'] == 'A':
-            precio = (elem['metros'] * 1000 + elem['habitaciones'] * 5000 + elem['garaje']) * 15000 * (1 - (elem['año']/100))
+            precio = (elem['metros'] * 1000 + elem['habitaciones'] * 5000 + elem['garaje'] * 15000) * (1 - (elem['año']/100))
             elem['precio'] = precio
         elif elem['zona'] == 'B':
             elem['precio']  = precio * 1.5
