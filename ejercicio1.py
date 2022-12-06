@@ -1,28 +1,28 @@
 #Escribir un programa que reciba una cadena de caracteres y devuelva un diccionario con cada palabra que contiene y su frecuencia. Escribir otra función que reciba el diccionario generado con la función anterior y devuelva una tupla con la palabra más repetida y su frecuencia.
 
-def cadena(words):
-     dictionary= {}
-     for word in words:
-         if word in dictionary:
-            dictionary[word] += 1
-         else:
-           dictionary[word] = 1                
+def cadena(words: str):
+    words = words.split()
+    dicc= {}
+    for word in words:
+        if word in dicc:
+            dicc[word] += 1
+        else:
+           dicc[word] = 1                
         
-     return dictionary
+    return dicc
 
-def repetidos(words):
+def repetidos(dicc):
         mayor = 0 
         tupla = ()
-        dictionary = cadena(words)
-        for clave, valor in dictionary.items():
+        for clave, valor in dicc.items():
             if valor > mayor :
-                mayor = valor   
+                mayor = valor    
                 tupla = (clave, mayor)
-                return tupla      
+        return tupla      
  
      
                
-words = (input("Ingresa una cadena: ").split())
+words = (input("Ingresa una cadena: "))
 print (cadena(words))  
-print (repetidos(words)) 
+print (repetidos(cadena(words)))           
  
