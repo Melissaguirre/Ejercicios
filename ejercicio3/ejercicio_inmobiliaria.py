@@ -1,3 +1,5 @@
+import math
+
 """
 Una inmobiliaria de una ciudad maneja una lista de inmuebles como la siguiente:
 [
@@ -21,29 +23,23 @@ lista = [
 
 def inmuebles(lista): 
     for elem in lista:
+        precio = (elem['metros'] * 1000 + elem['habitaciones'] * 5000 + elem['garaje'] * 15000 )* (2022 - (elem['año']))/100
         if elem['zona'] == 'A':
-            precio = (elem['metros'] * 1000 + elem['habitaciones'] * 5000 + elem['garaje']) * 15000 * (1 - (elem['año']/100))
-            elem['precio'] = precio
+            elem['precio'] =  math.trunc(precio)
         elif elem['zona'] == 'B':
-            elem['precio']  = precio * 1.5
+            elem['precio']  = math.trunc(precio * 1.5)
     return lista
 
+
 def precios(lista, presupuesto):
-    def busqueda_precios(lista):
-        for elem in lista.values():
-            if elem <= presupuesto: 
-              return True
-            
-        return False  
-    return filter(busqueda_precios, lista)
+    filtro = list(filter(lambda elem: elem['precio'] <= presupuesto, lista))    
+    return filtro
 
-    
 
-presupuesto = int((input("Introduce el presupuesto: ")))
-print ("PRECIOS")
+print (" ---- INMUEBLES ----")
 result = (inmuebles(lista))
 print(result)
-print ("-----------------")
-print ("BÚSQUEDA")
+presupuesto = int((input("Introduce el presupuesto: ")))
+print ("----- BÚSQUEDA PRECIOS------")
 result_filter = precios(lista, presupuesto) 
 print (list((result_filter)))
