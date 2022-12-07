@@ -23,7 +23,7 @@ lista = [
 
 def inmuebles(lista): 
     for elem in lista:
-        precio = (elem['metros'] * 1000 + elem['habitaciones'] * 5000 + elem['garaje'] * 15000 )* (2022 - (elem['año']))/100
+        precio = (elem['metros'] * 1000 + elem['habitaciones'] * 5000 + elem['garaje'] * 15000 ) * (1 - (2022 - elem['año'])/100)
         if elem['zona'] == 'A':
             elem['precio'] =  math.trunc(precio)
         elif elem['zona'] == 'B':
@@ -43,3 +43,8 @@ presupuesto = int((input("Introduce el presupuesto: ")))
 print ("----- BÚSQUEDA PRECIOS------")
 result_filter = precios(lista, presupuesto) 
 print (list((result_filter)))
+
+
+   
+            
+        
